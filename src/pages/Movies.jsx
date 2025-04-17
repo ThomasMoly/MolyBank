@@ -3,7 +3,7 @@ import { useDebounce } from 'use-debounce';
 import Search from '../components/search'
 import Spinner from '../components/Spinner';
 import MovieCard from '../components/MovieCard';
-import { getTrendingMovies, updateSearchCount } from '../appwrite/appwrite.js';
+import { getTrendingMovies, updateSearchCount } from '../appwrite.js';
 import '../CSS/Movies.css'
 
 
@@ -26,7 +26,7 @@ const App = () => {
     const [errorMessage, setErrorMessage] = useState('')// UseState for taking any errorMessages in the fetching prosses
     const [movieList, setMovieList] = useState([])//UseState for setting up the array of movies
     const [isLoading, setIsLoading] = useState(false)// UseState for beginning the loading process
-    const [debounceSearchTerm] = useDebounce(searchTerm, 500);
+    const [debounceSearchTerm] = useDebounce(searchTerm, 1000);
     const [trendingMovies, setTrendingMovies] = useState([])
 
     const fetchMovies = async (query = '') => {
