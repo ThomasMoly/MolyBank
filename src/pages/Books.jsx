@@ -6,6 +6,8 @@ import Spinner from '../components/Spinner'
 import '../components/BookCard'
 import BookCard from '../components/BookCard'
 import { updateSearchCount , getTrendingBooks } from '../appwrite/appwrite_Book.js';
+import NavBar from '../components/NavBar.jsx';
+
 
 const Books = () => {
   const [booksList, setBooksList] = useState([])
@@ -87,6 +89,7 @@ const Books = () => {
 
   return (
     <main>
+      <NavBar/>
       <div className="patterns"/>
       <div className="wrapper">
         <header>

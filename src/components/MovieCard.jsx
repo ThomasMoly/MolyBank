@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Desc from '../pages/Desc'
 
-const MovieCard = ({movie : {title, vote_average, poster_path, release_date, original_language}, }) => {
+const MovieCard = ({movie}) => {
+  const {title, vote_average, poster_path, release_date, original_language, id} = movie || {};
   return (
     <div className='movie-card'>
          <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}`: 'no-movie.png'
@@ -16,7 +19,10 @@ const MovieCard = ({movie : {title, vote_average, poster_path, release_date, ori
                     <p className='lang-white'>{original_language}</p>
                     <span>•</span>
                     <p className='year-white'>{release_date ? release_date.split('-')[0] + '/' + release_date.split('-')[1] : 'N/A'}</p>
-
+                    <span>•</span>
+                    <Link to = {`/Desc/${id}`}className='button' state={movie}>
+                      MoreInfo
+                    </Link>
                 </div>
             </div>
          </div>

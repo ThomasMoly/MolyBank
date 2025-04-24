@@ -1,0 +1,90 @@
+.img-container {
+    display: flex;
+    gap: 5rem; /* space between the images */
+  }
+
+  
+.img {
+    max-width: 25%;
+    height: 700px;
+    margin-left: 5rem;
+    margin: 50px 0; /* margin for spacing */
+    border-radius: 10px; /* rounded corners for the image */
+}
+.img:hover {
+    transform: scale(1.05); /* zoom effect on hover */
+    transition: transform 0.3s ease; /* smooth transition */
+}
+.info {
+    color: whitesmoke;
+    margin: 25px 0; /* margin for spacing */
+    line-height: 1.5; /* line height for better readability */
+    gap: 1rem; /* space between lines */
+}
+
+.Title{
+    font-size: xx-large;
+    font-weight: 900;
+    display: flex;
+}
+
+.ratings{
+    display: flex;
+    gap: 10%;
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right, #dacffb, #bfa5fb, #b48cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2rem; /* font size for the gradient text */
+    font-weight: 700; /* bold font for the gradient text */
+  }
+
+  .overview, .lang, .year, .popularity, .author, .price{
+    margin: 15px 0; /* margin for spacing */
+    line-height: 1.5; /* line height for better readability */
+    gap: 1rem; /* space between lines */
+    
+  }
+
+.wide{
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.next{
+    color: whitesmoke;
+    font-size: 1rem; /* font size for the next episode */
+    margin: 15px 0; /* margin for spacing */
+    display: flex;
+    align-items: center; /* center the next episode text vertically */
+
+}
+
+.r-next{
+    color: black; /* dark background for the next episode */
+    font-size: 1rem; /* font size for the next episode */
+    margin: 25px 0; /* margin for spacing */
+    display: flex;
+    align-items: center; /* center the next episode text vertically */
+}
+
+.overview{
+    justify-content: space-between; /* space between the elements */
+    align-items: center; /* center the elements vertically */
+    margin: 20px 0; /* margin for spacing */
+}
+
+
+
+
+.genre{
+    border-radius: 3px;
+    background-color: #1f2347; /* dark background for genre */
+    text-align: center;
+    padding: 0.5rem; /* padding for the genre box */
+    margin: 0.5rem 0.5rem; /* margin for spacing */
+    display: inline-block; /* inline-block for better alignment */
+    font-weight: 900;
+}

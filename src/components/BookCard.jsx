@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
     const {
+      id,
       volumeInfo: {
         title,
         publishedDate,
@@ -27,12 +29,15 @@ const BookCard = ({ book }) => {
          <li className='text-white text-2xl font-semibold'>{title}</li>
          <div className='content'>
                 <div className='rating'>
-                    <p>cost: {amount ? `$${amount}` : 'N/A'}</p>
+                    <p>{amount ? `$${amount}` : 'N/A'}</p>
                     <span>•</span>
                     <p className='lang-white'>{language}</p>
                     <span>•</span>
-                    <p className='year-white'>{publishedDate ? publishedDate : 'N/A'}</p>
-
+                    <p className='year-white'>{publishedDate ? publishedDate.split('-')[0] : 'N/A'}</p>
+                    <span>•</span>
+                    <Link to = {`/Book_Desc/${id}`}className='button' state={book}>
+                      MoreInfo
+                    </Link>
                 </div>
             </div>
         </div>

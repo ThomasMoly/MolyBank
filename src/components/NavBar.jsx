@@ -13,9 +13,11 @@ const CustomLink = ({to, children, ...props}) => {
 
 
 const NavBar = () => {
+  
+
   return (
     <nav className='Nav'>
-     <Link to='/' className='site-title'><img src='./logo.png'/><h2 className='name'>MolyBank</h2></Link>   
+     <Link to='/' className='site-title'><img src='/logo.png'/><h2 className='name'>MolyBank</h2></Link>   
      
     <ul>
         <CustomLink to='/'>Movies</CustomLink>

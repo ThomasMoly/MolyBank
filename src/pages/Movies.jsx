@@ -5,6 +5,10 @@ import Spinner from '../components/Spinner';
 import MovieCard from '../components/MovieCard';
 import { getTrendingMovies, updateSearchCount } from '../appwrite.js';
 import '../CSS/Movies.css'
+import {Route, Routes} from "react-router-dom"
+import Desc from './Desc.jsx';
+import NavBar from '../components/NavBar.jsx';
+
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3'
@@ -24,10 +28,10 @@ const options = {
 const App = () => {
     const[searchTerm, setSearchTerm] = useState('') // This is a use state to set the search for the search bar as an empty string
     const [errorMessage, setErrorMessage] = useState('')// UseState for taking any errorMessages in the fetching prosses
-    const [movieList, setMovieList] = useState([])//UseState for setting up the array of movies
     const [isLoading, setIsLoading] = useState(false)// UseState for beginning the loading process
     const [debounceSearchTerm] = useDebounce(searchTerm, 1000);
     const [trendingMovies, setTrendingMovies] = useState([])
+    const [movieList, setMovieList] = useState([])
 
     const fetchMovies = async (query = '') => {
         setIsLoading(true)
@@ -57,11 +61,13 @@ const App = () => {
             await updateSearchCount(query, data.results[0])
           }
 
+
         }catch(error){
           console.log(`Error fetching ${error}`)
           setErrorMessage('Error fetching movies. Please try again later.')
         } finally{
           setIsLoading(false)
+          return movieList;
         }
     }
 
@@ -86,8 +92,7 @@ const App = () => {
     
   return (
     <main>
-        
-        
+        <NavBar/>
         <div className="pattern"/>
         <div className="wrapper">
             <header>
@@ -126,11 +131,11 @@ const App = () => {
               ) : (
                 <ul>
                   {movieList.map((movie) => (
-                   <MovieCard key={movie.id} movie = {movie}/>
+                   <MovieCard key={movie.id} movie = {movie}/> 
                   ))}
                 </ul>
               )}
-
+              
             </section>
         </div>
     </main>

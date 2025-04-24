@@ -5,6 +5,7 @@ import Spinner from '../components/Spinner'
 import TVCard from '../components/TVCard'
 import { useDebounce } from 'use-debounce'
 import { updateSearchCount, getTrendingShows} from '../appwrite_TV.js'
+import NavBar from '../components/NavBar.jsx';
 
 const TVShows = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -83,6 +84,7 @@ const TVShows = () => {
 
   return (
     <main>
+      <NavBar/>
       <div className="patternG"/>
       <div className="wrapper">
         <header>

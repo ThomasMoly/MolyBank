@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const TVCard = ({tv : {name, vote_average, poster_path, first_air_date, original_language}, }) => {
+const TVCard = ({tv}) => {
+  const {name, vote_average, poster_path, first_air_date, original_language, id} = tv || {}; // fallback if tv is somehow undefined
+
   return (
     <div className='movie-card'>
          <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}`: 'no-movie.png'
@@ -15,8 +18,11 @@ const TVCard = ({tv : {name, vote_average, poster_path, first_air_date, original
                     <span>•</span>
                     <p className='lang-white'>{original_language}</p>
                     <span>•</span>
-                    <p className='year-white'>{first_air_date ? first_air_date : 'N/A'}</p>
-
+                    <p className='year-white'>{first_air_date ? first_air_date.split('-')[0] : 'N/A'}</p>
+                    <span>•</span>
+                    <Link to = {`/Show_Desc/${id}`}className='button' state={tv}>
+                      MoreInfo
+                    </Link>
                 </div>
             </div>
          </div>
