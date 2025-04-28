@@ -4,7 +4,7 @@ import Search from '../components/search'
 import Spinner from '../components/Spinner'
 import TVCard from '../components/TVCard'
 import { useDebounce } from 'use-debounce'
-import { updateSearchCount, getTrendingShows} from '../appwrite_TV.js'
+import { updateSearchCount, getTrendingShows} from '../appwrite/appwrite_TV.js'
 import NavBar from '../components/NavBar.jsx';
 
 const TVShows = () => {

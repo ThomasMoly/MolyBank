@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar'
 import { useParams, useLocation } from 'react-router-dom'
 import '../CSS/Desc.css'
+import { writeComment, getComments } from '../appwrite/appwrite_Desc'
+
 
 
 const Desc = () => {
     const params = useParams()
     const location = useLocation();
+
+    const [comment, setComment] = useState('')
+    const [showComment, setShowComment] = useState([])
 
     const [data] = useState(location.state || {})
 
@@ -43,6 +48,31 @@ const Desc = () => {
       genre.set(id, genreName);
     })
 
+    const handleCommentChange = (event) => {
+      const comments = event.target.value;
+      
+      setComment(comments);
+    }
+
+    const handleFormSubmit = (event) => {
+      event.preventDefault(); // stops the page from reloading
+    }
+    
+    const handleSubmit = () => {
+      writeComment(comment, id);
+  };
+
+    const handleShowComment = async () => {
+      const displayComment = await getComments();
+      const filteredComments = displayComment.documents.filter((comment) => comment.id === id);
+      console.log(filteredComments)
+      setShowComment(filteredComments);
+    }
+
+  useEffect(() => {
+    handleShowComment()
+  }, [])
+
   return (
     <main>
         <NavBar/>
@@ -71,8 +101,19 @@ const Desc = () => {
               } alt={title}/>
              </div>
         </div>
-        <div className='content'>
-          
+        <div className='comment-container'>
+        <h2>Comments</h2>
+              <form onSubmit={handleFormSubmit}>
+              <textarea id="comment" name="" rows="5" cols="100" placeholder="Write a comment..." value={comment} onChange={handleCommentChange}/>
+              <button type="submit" className='submit-button' onClick={handleSubmit}>Submit </button>
+              </form>
+              {
+                showComment.map((comment, id) => (
+                  <div key={id}>
+                    <p className='comment-box '>{comment.comment}</p>
+                </div>
+                ))
+              }
         </div>
         </div>
     </main>

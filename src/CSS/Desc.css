@@ -33,6 +33,45 @@
     gap: 10%;
 }
 
+.comment-container{
+    margin: 3rem 0; /* margin for spacing */
+    background-color: transparent; /* dark background for the comment container */
+    text-align: center; /* center the comment container vertically */
+}
+
+.comment-box {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    background: #e1bee7;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .submit-button {
+    background-color: #673ab7; /* purple background for the submit button */
+    color: white; /* white text for the submit button */
+    padding: 10px 20px; /* padding for the submit button */
+    border: none; /* no border for the submit button */
+    border-radius: 5px; /* rounded corners for the submit button */
+    cursor: pointer; /* pointer cursor on hover */
+    font-size: 1rem; /* font size for the submit button */
+    margin-top: 10px; /* margin for spacing */
+  }
+  
+
+#comment{
+    width: 100%;
+    height: 100%;
+    padding: 1rem; /* padding for the comment box */
+    border-radius: 10px; /* rounded corners for the comment box */
+    color: whitesmoke; /* text color for the comment box */
+    font-size: 1rem; /* font size for the comment box */
+    border: none; /* no border for the comment box */
+}
+
 .gradient-text {
     background-image: linear-gradient(to right, #dacffb, #bfa5fb, #b48cf8);
     -webkit-background-clip: text;
@@ -88,3 +127,4 @@
     display: inline-block; /* inline-block for better alignment */
     font-weight: 900;
 }
+

@@ -4,7 +4,6 @@ import { Client, Databases, Query, ID } from "appwrite";
 const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID
 const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID
-const COLLECTION_TV_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID
 
 
 const client = new Client()
@@ -28,7 +27,7 @@ export const updateSearchCount = async (searchTerm, movie) =>{
         await database.updateDocument(DATABASE_ID, COLLECTION_ID, doc.$id, {
             count: doc.count + 1,
         })
-            //3. if it doens't create a new docoument with the search term and count as 1
+    //3. if it doens't create a new docoument with the search term and count as 1
     } else {
         await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
             searchTerm,
