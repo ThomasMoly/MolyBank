@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../CSS/navbar.css'
 import { Link } from 'react-router-dom'
+import { UserContext } from './user'
 
 const CustomLink = ({to, children, ...props}) => {
   
@@ -13,7 +14,8 @@ const CustomLink = ({to, children, ...props}) => {
 
 
 const NavBar = () => {
-  
+  const { user } = useContext(UserContext);
+
 
   return (
     <nav className='Nav'>
@@ -23,6 +25,11 @@ const NavBar = () => {
         <CustomLink to='/'>Movies</CustomLink>
         <CustomLink to='/Books'>Books</CustomLink>
         <CustomLink to='/TVShows'>TV Shows</CustomLink>
+        {user ? (
+          <li>Welcome {user.name}</li>
+        ) : (
+          <CustomLink to='/Login'>Login</CustomLink>
+        )}  
     </ul>
     </nav>
   )

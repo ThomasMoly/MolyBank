@@ -7,6 +7,9 @@ import Movies from './pages/Movies.jsx';
 import Desc from './pages/Desc.jsx'
 import Book_Desc from './pages/Book_Desc.jsx'
 import Show_Desc from './pages/Show_Desc.jsx';
+import Login from './pages/login.jsx';
+import SignUp from './pages/SignUp.jsx';
+import { UserProvider } from './components/user.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,12 +35,22 @@ const router = createBrowserRouter([
   {
     path: '/Show_Desc/:id/',
     element: <Show_Desc/>
+  },
+  {
+    path: '/Login',
+    element: <Login/>
+  },
+  {
+    path: '/SignUp',
+    element: <SignUp/>
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <UserProvider>
+      <RouterProvider router={router}/>
+    </UserProvider>
   </StrictMode>,
   
 )

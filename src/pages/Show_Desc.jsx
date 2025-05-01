@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import NavBar from '../components/NavBar'
 import { useLocation, useParams } from 'react-router-dom'
+import { writeComment, getComments } from '../appwrite/appwrite_Desc'
+import { UserContext } from '../components/user'
 
 const Show_Desc = () => {
   const props = useParams()
   const location = useLocation()
 
-  const [data] = useState(location.state || {})
+  const { user } = useContext(UserContext);
+  
+  const [comment, setComment] = useState('')
+  const [showComment, setShowComment] = useState([])
+  const [show, setShow] = useState(0)
 
-  console.log(data)
+  const [data] = useState(location.state || {})
 
   const {name, vote_average, poster_path, first_air_date, original_language, id, genre_ids, popularity, overview, backdrop_path} = data || {};
 
@@ -39,6 +45,44 @@ const Show_Desc = () => {
     genre.set(id, genreName);
   })
 
+  const handleCommentChange = (event) => {
+        const comments = event.target.value;
+        
+        setComment(comments);
+      }
+  
+      const handleFormSubmit = (event) => {
+        event.preventDefault(); // stops the page from reloading
+      }
+      
+      const handleSubmit = async() => {
+        try {
+          if(user){
+            await writeComment(comment, id, user.name); 
+            setComment(''); // Clear the comment input after submission
+            handleShowComment(); // Refresh the comments after submission
+            setShow(prev => prev + 1); // Toggle the show state to trigger re-rendering
+          }
+          else{
+            alert('Please login to comment')
+          }
+        } catch (error) {
+          console.error(error);
+        }
+    };
+  
+      const handleShowComment = async () => {
+        const displayComment = await getComments();
+        const filteredComments = displayComment.documents.filter((comment) => comment.id === id);
+        console.log(filteredComments)
+        setShowComment(filteredComments);
+      }
+  
+    useEffect(() => {
+      handleShowComment()
+    }, [show])
+  
+
 return (
   <main>
       <NavBar/>
@@ -67,6 +111,24 @@ return (
             } alt={name}/>
            </div>
       </div>
+      <div className='comment-container'>
+        <h2>Comments</h2>
+              <form onSubmit={handleFormSubmit}>
+              <div className='comment-sumbit'>
+                <textarea id="comment" name="" rows="1" cols="1" placeholder="Write a comment..." value={comment} onChange={handleCommentChange}/>
+                <button type="submit" className='submit-button' onClick={handleSubmit}>Submit </button>
+              </div>
+              </form>
+              {
+                showComment.map((comment, id) => {
+                  return (
+                  <div className = 'comment-container ' key={id}>
+                    <p className='comment-user gradient-text'>{comment.username}</p>
+                    <p className='comment-box '>{comment.comment}</p>
+                </div>
+                )})
+              }
+        </div>
       </div>
   </main>
 )

@@ -3,7 +3,7 @@ import { useDebounce } from 'use-debounce';
 import Search from '../components/search'
 import Spinner from '../components/Spinner';
 import MovieCard from '../components/MovieCard';
-import { getTrendingMovies, updateSearchCount } from '../appwrite.js';
+import { getTrendingMovies, updateSearchCount } from '../appwrite/appwrite.js';
 import '../CSS/Movies.css'
 import {Route, Routes} from "react-router-dom"
 import Desc from './Desc.jsx';

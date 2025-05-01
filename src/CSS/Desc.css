@@ -36,40 +36,58 @@
 .comment-container{
     margin: 3rem 0; /* margin for spacing */
     background-color: transparent; /* dark background for the comment container */
-    text-align: center; /* center the comment container vertically */
 }
 
+.comment-container h2 {
+    color: whitesmoke; /* white text for the comment header */
+    font-size: 1.5rem; /* font size for the comment header */
+    margin-left: 3rem; /* margin for spacing */
+    font-weight: 700; /* bold font for the comment header */
+  }
+
+ 
 .comment-box {
-    width: 100%;
-    max-width: 600px;
-    margin: 30px auto;
-    background: #e1bee7;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 100rem;
+    margin-left: 5rem;
+    border-radius: .2rem;
     padding: 20px;
+    border-bottom: #dacffb 1px solid; /* purple border for the comment box */
     font-family: 'Segoe UI', sans-serif;
+    color: whitesmoke;
+    font-weight: 700;
+  }
+
+  .comment-user{
+    margin-left: 3rem;
   }
   
   .submit-button {
-    background-color: #673ab7; /* purple background for the submit button */
-    color: white; /* white text for the submit button */
-    padding: 10px 20px; /* padding for the submit button */
-    border: none; /* no border for the submit button */
+    background-color: #bfa5fb; /* purple background for the submit button */
+    color: black; /* white text for the submit button */
+    padding: 10px 10px; /* padding for the submit button */
     border-radius: 5px; /* rounded corners for the submit button */
     cursor: pointer; /* pointer cursor on hover */
     font-size: 1rem; /* font size for the submit button */
     margin-top: 10px; /* margin for spacing */
+    display: flex;
+    margin-left: 3rem; /* margin for spacing */
   }
   
+  .submit-button:hover {
+    background-color: #dacffb; /* lighter purple on hover */
+    transition: background-color 0.3s ease; /* smooth transition */
+  }
+
 
 #comment{
-    width: 100%;
+    width: 50%;
     height: 100%;
     padding: 1rem; /* padding for the comment box */
     border-radius: 10px; /* rounded corners for the comment box */
     color: whitesmoke; /* text color for the comment box */
     font-size: 1rem; /* font size for the comment box */
-    border: none; /* no border for the comment box */
+    text-align: left;
+    margin-left: 3rem; /* margin for spacing */
 }
 
 .gradient-text {

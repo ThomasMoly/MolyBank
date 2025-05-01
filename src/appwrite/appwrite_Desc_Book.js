@@ -3,7 +3,7 @@ import { Client, Databases, Query, ID } from "appwrite";
 
 const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID
-const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_COMMENT_ID
+const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_COMMENT_B_ID
 
 
 const client = new Client()
@@ -17,7 +17,7 @@ export const writeComment = async (comment, id, username) =>{
     try{
         await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
             comment,
-            id: id,
+            Id: id,
             username: username,
         })
     }catch (error){
@@ -28,6 +28,7 @@ export const writeComment = async (comment, id, username) =>{
 export const getComments = async() =>{
     try {
         const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID)
+        console.log(result)
         return result
     } catch (error) {
         console.log(error)
